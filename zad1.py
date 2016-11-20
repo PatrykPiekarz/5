@@ -56,6 +56,7 @@ lstpom = []
 for i in lsta:
     if i!='X':
         lstpom.append(i)
+
 lsta=lstpom
 print "lsita a po usunieciu duplikatow:"
 print lsta
@@ -66,13 +67,19 @@ print "srednia:"
 print srednia/lsta.__len__()
 for i in lsta:
     i=i*i*i
+lstpom2=[]
 for i in range(0,lsta.__len__()):
-    if lsta[i]%2==0:
-        lsta[i]='A'
-    if lsta[i]%3==0:
-        lsta[i]='E'
-    if lsta[i]%5==0:
-        lsta[i]='L'
+    if lsta[i] % 2==0:
+        lstpom2.append('A')
+    else:
+        if lsta[i] % 3==0:
+            lstpom2.append('E')
+        else:
+            if lsta[i] % 5==0:
+                lstpom2.append('L')
+            else:
+                lstpom2.append(lsta[i])
+lsta=lstpom2
 
 print "lsita a po zmianie liczb podzielnych przez 2,3,5 na A,E,L:"
 print lsta
@@ -115,3 +122,13 @@ for i in range(0,lsta.__len__()):
 print "lsita a po zmianie liczb pierwszych na Z:"
 print lsta
 
+lstf=[x for x in lsta if x == 'A' or x == 'L' or x == 'E' or x == 'Z']
+napisy=[]
+for i in lstf:
+    random.shuffle(lstf)
+    napis=random.choice(lstf)
+    for j in range(1,lstf.__len__()):
+        napis+=random.choice(lstf)
+    napisy.append(napis)
+print "lista skladajaca sie z napisow utworzonych na podstawie liter w liscie a"
+print napisy
